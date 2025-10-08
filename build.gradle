@@ -22,6 +22,21 @@ repositories {
 }
 
 dependencies {
+
+    implementation 'com.hazelcast:hazelcast'
+
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+    modules {
+        module("org.springframework.boot:spring-boot-starter-tomcat") {
+            replacedBy("org.springframework.boot:spring-boot-starter-undertow")
+        }
+    }
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-vault-config:4.2.2'
+
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.security:jmix-security-starter'
@@ -43,7 +58,7 @@ dependencies {
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
     implementation 'io.jmix.pessimisticlock:jmix-pessimisticlock-starter'
     implementation 'io.jmix.pessimisticlock:jmix-pessimisticlock-flowui-starter'
-    implementation 'org.hsqldb:hsqldb'
+    implementation 'org.postgresql:postgresql'
 }
 
 configurations.implementation {
@@ -65,3 +80,5 @@ idea {
 vaadin {
     optimizeBundle = false
 }
+
+
